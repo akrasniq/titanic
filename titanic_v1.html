@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+  
+  <style>
+	.first_header {
+		position:absolute;
+		margin-left:550px;
+	}
+	.second_header {
+		position:absolute;
+		margin-left:850px;
+	}	
+  </style>
+  
+    <script type="text/javascript">
+      function draw(data) {
+      
+      /*
+        D3.js setup code
+      */
+
+          "use strict";
+          var margin = 75,
+              width = 1400 - margin,
+              height = 600 - margin;
+			  
+			//First Chart Title
+			d3.select("body")
+				.append("div")
+				.attr("class","first_header")
+				.append("h2").text("Titanic Survivors and Causalties");
+			
+			//Second Chart Title
+			/*
+      d3.select("body")
+				.append("div")
+				.attr("class","second_header")
+				.append("h2").text("Titanic Causalties");
+			*/
+          //Add svg element to page
+          var svg = d3.select("body")
+            .append("svg")
+              .attr("width", width + margin)
+              .attr("height", height + margin)
+            .append('g')
+                .attr('class','chart');
+				
+		//debugger;
+
+      /*
+        Dimple.js Chart construction code
+      */
+			
+          var myChart = new dimple.chart(svg, data);
+		      //myChart.setBounds(60, 60, 500, 330)
+          var x = myChart.addCategoryAxis("x", ["Pclass", "Survived"]); 
+          var y  = myChart.addMeasureAxis("y", ["Survived"]); 
+		      y.overrideMax = 400; //Set y scale
+          var mySeries = myChart.addSeries(["Sex"], dimple.plot.bar);
+		      
+          //add custom ToolTipText
+		      
+          mySeries.getTooltipText = function (e) {
+            debugger;
+				  return ["Gender: " + e.aggField[0],
+                  "Survived: " + ((e.xField[1]) == 1 ? 'Yes' : 'No'),
+					        "Count: " + e.height,
+					        "Ticket class: " + e.x
+                  ];
+          };
+          //Order by Passenger class
+          x.addOrderRule(["First Class", "Second Class", "Third Class"]);
+		      myChart.addLegend(850, 80, 380, 200, "right");
+
+          x.title = "Passenger Class";
+          y.title = "Count";
+
+          y.overrideMin = -400;
+
+          myChart.draw();		 
+			     
+          /*
+          var myChart = new dimple.chart(svg, data);
+		      myChart.setBounds(700, 60, 500, 330)
+          var x = myChart.addCategoryAxis("x", ["Pclass", "Died"]); 
+          var y = myChart.addMeasureAxis("y", ["Died"]); 
+          
+          var mySeries = myChart.addSeries(["Sex"], dimple.plot.bar);
+                    mySeries.getTooltipText = function (e) {
+          return ["Gender: " + e.aggField[0],
+                  "Survived: Yes",
+                  "Count: " + e.height,
+                  "Ticket class: " + e.x
+                  ];
+          };
+          //Order by Passenger class
+          x.addOrderRule(["First Class", "Second Class", "Third Class"]);
+		      myChart.addLegend(815, 80, 380, 20, "left");
+
+          x.title = "Passenger Class";
+          y.title = "Count";
+		  
+          myChart.draw();
+          //reposition the rectangles (bars)
+          d3.selectAll("rect").attr("transform", "translate(35, 0)");
+          //reposition the legend
+          d3.selectAll(".dimple-legend").attr("transform", "translate(35, 0)");
+          */
+
+
+        };
+		
+      </script>
+  </head>
+<body>
+  <script type="text/javascript">
+  /*
+    Use D3 (not dimple.js) to load the TSV file
+    and pass the contents of it to the draw function
+    */
+  d3.csv("titanic_data.csv", function(d) {
+		  d['Survived'] = +d['Survived'],
+      d['Survived'] = (d['Survived']) == 0 ? -1 : 1,
+          d['Died'] = (d['Survived']) == 1 ? 0 : 1,
+		  d['Pclass'] = +d['Pclass'];
+		  d['Pclass'] = (d['Pclass']) == 1 ? "First Class" : (d['Pclass']) ==                             2 ? "Second Class" : "Third Class";
+          return d;
+        },
+  draw);
+  </script>
+</body>
+</html>

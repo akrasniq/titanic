@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+  
+  <style>
+	.first_header {
+		position:absolute;
+		margin-left:250px;
+	}
+	.second_header {
+		position:absolute;
+		margin-left:850px;
+	}	
+  </style>
+  
+    <script type="text/javascript">
+      function draw(data) {
+      
+      /*
+        D3.js setup code
+      */
+
+          "use strict";
+          var margin = 75,
+              width = 1400 - margin,
+              height = 600 - margin;
+			  
+			//First Chart  
+			d3.select("body")
+				.append("div")
+				.attr("class","first_header")
+				.append("h2").text("Titanic Survivors");
+			
+			//Second Chart	
+			d3.select("body")
+				.append("div")
+				.attr("class","second_header")
+				.append("h2").text("Titanic Causalties");
+			
+          var svg = d3.select("body")
+            .append("svg")
+              .attr("width", width + margin)
+              .attr("height", height + margin)
+            .append('g')
+                .attr('class','chart');
+				
+		//debugger;
+
+      /*
+        Dimple.js Chart construction code
+      */
+			
+          var myChart = new dimple.chart(svg, data);
+		  myChart.setBounds(60, 60, 500, 330)
+          var x = myChart.addCategoryAxis("x", ["Pclass", "Survived"]); 
+		  //x.title = "Passenger Class";
+          var y  = myChart.addMeasureAxis("y", ["Survived"]); 
+		  //y.title = "Count";
+		  //y.overrideMax = 400;
+		  //y.title = "some title"
+          var mySeries = myChart.addSeries(["Sex"], dimple.plot.bar);
+		   /*
+		   mySeries.getTooltipText = function (e) {
+                //debugger;
+				return [
+                    "Gender: " + e.aggField[0],
+					"Survived: Yes",
+					"Count: " + e.height,
+					"Ticket class: " + e.x
+                ];
+            };
+		  */
+		  //myChart.addLegend(250, 80, 380, 20, "right");
+          myChart.draw();
+		 
+			
+          var myChart = new dimple.chart(svg, data);
+		  myChart.setBounds(700, 60, 500, 330)
+          var x = myChart.addCategoryAxis("x", ["Pclass", "Died"]); 
+		  //x.title = "Passenger Class";
+          myChart.addMeasureAxis("y", ["Died"]); 
+          myChart.addSeries(["Sex"], dimple.plot.bar);
+		  //myChart.addLegend(900, 80, 380, 20, "right");
+		  
+          myChart.draw();
+        };
+		
+      </script>
+  </head>
+<body>
+  <script type="text/javascript">
+  /*
+    Use D3 (not dimple.js) to load the TSV file
+    and pass the contents of it to the draw function
+    */
+  d3.csv("titanic_data.csv", function(d) {
+		  d['Survived'] = +d['Survived'],
+          d['Died'] = (d['Survived']) == 1 ? 0 : 1,
+		  d['Pclass'] = +d['Pclass'];
+		  //d['Pclass'] = (d['Pclass']) == 1 ? "First Class" : (d['Pclass']) == 2 ? "Second Class" : "Third Class";
+          return d;
+        },
+  draw);
+  </script>
+</body>
+</html>
