@@ -13,6 +13,10 @@ Per my reviewer feedback and additional personal ideas I changed the plot quite 
 - Wrote a custom ToolTip to contain better descriptions.
 - Renamed the axis with clear titles
 - Renamed the pClass variable to read Passenger Class.
+- Added  "Survivors" and "Casualities" label to distinguish between the two different classes (per Udacity Review reviewer comments)
+- Corrected typo in the title (per Udacity Review reviewer comments)
+- Rescaled the y-axis upper boundary to 200 (per Udacity reviewer comments)
+- Change the Tittle to help towards making this visualization explanatory and not exploratory (per Udacity reviewer comments)
 
 
 #### Feedback
@@ -60,4 +64,5 @@ Per my reviewer feedback and additional personal ideas I changed the plot quite 
 
 #### Resources
 https://www.udacity.com/<br>
-http://dimplejs.org/
+http://dimplejs.org/<br>
+http://stackoverflow.com/questions/11189284/d3-axis-labeling<br>

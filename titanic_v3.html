@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.0.0.min.js"></script>
+  
+  <style>
+	.center_header {
+		position:absolute;
+		margin-left:300px;
+	}
+  .vertical-text {
+    transform: rotate(90deg);
+    transform-origin: left top 0;
+  }
+  </style>
+  
+    <script type="text/javascript">
+      function draw(data) {
+      
+        /*
+          D3.js setup code
+        */
+
+            "use strict";
+            var margin = 75,
+                width = 1400 - margin,
+                height = 600 - margin;
+  			  
+  			//First Chart Title
+  			d3.select("body")
+  				.append("div")
+  				.attr("class","center_header")
+  				//.append("h2").text("Titanic Survivors and Casualties");
+          .append("h2").text("Titanic: Number of Survivors and Casualities based on Gender and Passenger Class");
+  			
+            //Add svg element to page
+            var svg = d3.select("body")
+              .append("svg")
+              .attr("width", width + margin)
+              .attr("height", height + margin)
+              .append('g')
+              .attr('class','chart');
+
+            //x axix label
+            svg.append("text")
+                .attr("class", "x label")
+                .attr("text-anchor", "end")
+                .attr("x", 750)
+                .attr("y", 575)
+                .text("Passenger Class");          
+
+            //y axis first label
+            svg.append("text")
+              .attr("class", "y label")
+              .attr("text-anchor", "end")
+              .attr("x", -120)
+              .attr("y", 90)
+              .attr("dy", ".75em")
+              .attr("transform", "rotate(-90)")
+              .text("Survivors");
+            
+            //y axis second label
+            svg.append("text")
+              .attr("class", "y label")
+              .attr("text-anchor", "end")
+              .attr("x", -325)
+              .attr("y", 90)
+              .attr("dy", ".75em")
+              .attr("transform", "rotate(-90)")
+              .text("Casualties");
+
+        /*
+          Dimple.js Chart construction code
+        */
+  			
+        var myChart = new dimple.chart(svg, data);
+        //myChart.setBounds(60, 60, 500, 330)
+        var x = myChart.addCategoryAxis("x", ["Pclass", "Survived"]); 
+        var y  = myChart.addMeasureAxis("y", ["Survived"]); 
+        //group by sex
+        var mySeries = myChart.addSeries(["Sex"], dimple.plot.bar);
+  		      
+        //add custom ToolTipText
+        mySeries.getTooltipText = function (e) {
+        //debugger;
+  		  return ["Gender: " + e.aggField[0],
+                "Survived: " + ((e.xField[1]) == 1 ? 'Yes' : 'No'),
+  			        "Count: " + e.height,
+  			        "Ticket class: " + e.x
+                ];
+        };
+        
+        //Order by Passenger class
+        x.addOrderRule(["First Class", "Second Class", "Third Class"]);
+        //Add legend
+        myChart.addLegend(850, 80, 380, 200, "right");
+        
+        //we are writing the axis labels with d3, make dimple's y axis null
+        x.title = null;
+        y.title = null;
+
+        //scale coordinates
+        y.overrideMax = 200;
+        y.overrideMin = -400;
+
+        //debugger;
+        myChart.draw();		 
+
+      };
+		
+      </script>
+  </head>
+<body>
+  <script type="text/javascript">
+  /*
+    Use D3 (not dimple.js) to load the TSV file
+    and pass the contents of it to the draw function
+    */
+  d3.csv("titanic_data.csv", function(d) {
+		  d['Survived'] = +d['Survived'], //convert to number
+      d['Survived'] = (d['Survived']) == 0 ? -1 : 1, //substitute 0's with -1 to get count below 0 (casualties)
+		  d['Pclass'] = +d['Pclass'];
+		  d['Pclass'] = (d['Pclass']) == 1 ? "First Class" : (d['Pclass']) ==                             2 ? "Second Class" : "Third Class";
+          return d;
+        },
+  draw);
+  </script>
+</body>
+</html>
