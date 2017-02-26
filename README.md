@@ -56,5 +56,5 @@ Per my reviewer feedback and additional personal ideas I changed the plot quite 
 	Looks clear enough. Perhaps more description of the pclass definition. 
 
 #### Resources
-https://www.udacity.com/
+https://www.udacity.com/<br>
 http://dimplejs.org/
