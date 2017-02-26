@@ -20,38 +20,38 @@ Per my reviewer feedback and additional personal ideas I changed the plot quite 
 ##### Reviewer 1
 
 **What do you notice in the visualization?**<br>
-	I notice the titles of the graphs, the 2 different graphs, and that the graph is interactive.
+	I notice the titles of the graphs, the 2 different graphs, and that the graph is interactive.<br>
 **What questions do you have about the data?**<br>
-	What is pclass? 
+	What is pclass?<br> 
 **What relationships do you notice?**<br>
-	I noticed the relationship with class and deaths for men. In other words, that the higher the 'p class' the more men died.
+	I noticed the relationship with class and deaths for men. In other words, that the higher the 'p class' the more men died.<br>
 ***What do you think is the main takeaway from this visualization?***<br>
-	I think the main takeaway from this visualization is that more women survived the Titanic catastrophe than men. 
+	I think the main takeaway from this visualization is that more women survived the Titanic catastrophe than men.<br> 
 ***Is there something you don’t understand in the graphic?***<br>
 	No, everything is easily comprehensible. 
 
 
 ##### Reviewer 2
 **What do you notice in the visualization?**<br>
-	The plot is interactive
+	The plot is interactive<br>
 **What questions do you have about the data?**<br>
-	what is Pclass, what is "Survived:1" vs "Survived:45"?
+	what is Pclass, what is "Survived:1" vs "Survived:45"?<br>
 **What relationships do you notice?**<br>
-	Pclass, sex and survival/death odds
+	Pclass, sex and survival/death odds<br>
 ***What do you think is the main takeaway from this visualization?***<br>
-	Passenger Class and Sex seem to have played a role in Survival/Death odds
+	Passenger Class and Sex seem to have played a role in Survival/Death odds<br>
 ***Is there something you don’t understand in the graphic?***<br>
 	I'm a little unclear on the legend of the chart. What's represented in the x-axis? Do I need to understand what Pclass is?
 	
 ##### Reviewer 3
 **What do you notice in the visualization?**<br>
-	I noticed more female survivors than male. furthermore, more male deaths than female. 
+	I noticed more female survivors than male. furthermore, more male deaths than female.<br> 
 **What questions do you have about the data?**<br>
-	my question is, what does the x-axis represent? it's not clear what pclass means? 
+	my question is, what does the x-axis represent? it's not clear what pclass means?<br> 
 **What relationships do you notice?**<br>
-	Looks like more male deaths in pclass 3 than 2 or 1. not sure what that means? maybe pclass represented lower income class, which may mean that they received less priority than upper class? 
+	Looks like more male deaths in pclass 3 than 2 or 1. not sure what that means? maybe pclass represented lower income class, which may mean that they received less priority than upper class?<br> 
 ***What do you think is the main takeaway from this visualization?***<br>
-	Nice and simple. I think a legend would be nice. 
+	Nice and simple. I think a legend would be nice.<br> 
 ***Is there something you don’t understand in the graphic?***<br>
 	Looks clear enough. Perhaps more description of the pclass definition. 
 
