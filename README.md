@@ -13,8 +13,8 @@ Per my reviewer feedback and additional personal ideas I changed the plot quite 
 - Wrote a custom ToolTip to contain better descriptions.
 - Renamed the axis with clear titles
 - Renamed the pClass variable to read Passenger Class.
-- Added  "Survivors" and "Casualities" label to distinguish between the two different classes (per Udacity Review reviewer comments)
-- Corrected typo in the title (per Udacity Review reviewer comments)
+- Added  "Survivors" and "Casualities" label to distinguish between the two different classes (per Udacity reviewer comments)
+- Corrected typo in the title (per Udacity reviewer comments)
 - Rescaled the y-axis upper boundary to 200 (per Udacity reviewer comments)
 - Change the Tittle to help towards making this visualization explanatory and not exploratory (per Udacity reviewer comments)
 
