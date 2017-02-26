@@ -53,8 +53,10 @@ Per my reviewer feedback and additional personal ideas I changed the plot quite 
 ***What do you think is the main takeaway from this visualization?***<br>
 	Nice and simple. I think a legend would be nice.<br> 
 ***Is there something you don’t understand in the graphic?***<br>
-	Looks clear enough. Perhaps more description of the pclass definition. 
-![Alt text](chart?raw=true "")
+	Looks clear enough. Perhaps more description of the pclass definition.
+
+<br>
+![Alt text](/chart.png?raw=true "Chart")
 
 #### Resources
 https://www.udacity.com/<br>
