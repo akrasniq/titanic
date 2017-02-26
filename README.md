@@ -19,8 +19,8 @@ Per my reviewer feedback and additional personal ideas I changed the plot quite 
 
 ##### Reviewer 1
 
-**What do you notice in the visualization?**
-	-I notice the titles of the graphs, the 2 different graphs, and that the graph is interactive.
+**What do you notice in the visualization?**<br>
+	I notice the titles of the graphs, the 2 different graphs, and that the graph is interactive.
 **What questions do you have about the data?**
 	What is pclass? 
 **What relationships do you notice?**
