@@ -54,6 +54,7 @@ Per my reviewer feedback and additional personal ideas I changed the plot quite 
 	Nice and simple. I think a legend would be nice.<br> 
 ***Is there something you don’t understand in the graphic?***<br>
 	Looks clear enough. Perhaps more description of the pclass definition. 
+![Alt text](chart?raw=true "")
 
 #### Resources
 https://www.udacity.com/<br>
